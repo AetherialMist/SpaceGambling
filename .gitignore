@@ -4,3 +4,4 @@ target
 .vscode
 node_modules
 .env
+src/main/resources/static/built/bundle.js.map

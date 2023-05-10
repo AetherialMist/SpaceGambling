@@ -1,18 +1,20 @@
 var path = require('path');
 
 module.exports = {
-    entry: './src/main/js/app.tsx',
-    devtool: 'sourcemaps',
-    cache: true,
+    entry: path.resolve(__dirname, './src/main/js/app.tsx'),
     mode: 'development',
+    devtool: 'cheap-source-map',
     output: {
         path: __dirname,
         filename: './src/main/resources/static/built/bundle.js'
     },
+    resolve: {
+        extensions: ['*', '.js', '.ts', 'tsx', '.jsx']
+    },
     module: {
         rules: [
             {
-                test: path.join(__dirname, '.'),
+                test: /\.(t|j)sx?$/,
                 exclude: /(node_modules)/,
                 use: [{
                     loader: 'babel-loader',

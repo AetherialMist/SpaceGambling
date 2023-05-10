@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -d --output ./target/classes/static/built/bundle.js",
-    "watch": "webpack --watch -d --output ./target/classes/static/built/bundle.js"
+    "build": "webpack build",
+    "watch": "webpack watch"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
     "babel-loader": "^9.1.2",
+    "tailwindcss": "^3.3.2",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.4",
     "webpack": "^5.82.0",
