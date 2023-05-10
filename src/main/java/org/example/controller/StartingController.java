@@ -1,27 +1,23 @@
 package org.example.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.config.Constants;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.RequestEntity;
+import org.example.service.AgentService;
+import org.example.service.FactionsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @RestController
 @RequestMapping("/getting-started")
+@RequiredArgsConstructor
 public class StartingController {
 
-    private final RestTemplate jsonRestTemplate;
-
-    public StartingController(@Qualifier("jsonRestTemplate") RestTemplate jsonRestTemplate) {
-        this.jsonRestTemplate = jsonRestTemplate;
-    }
-
+    private final AgentService agentService;
+    private final FactionsService factionsService;
 
     @PostMapping("/start")
     public ResponseEntity<String> postNewAgent(@RequestBody Map<String, Object> input) {
@@ -34,8 +30,13 @@ public class StartingController {
 
     @GetMapping("/agent")
     public ResponseEntity<Map<String, Object>> getAgentDetails() {
-        RequestEntity<Void> request = RequestEntity.get("https://api.spacetraders.io/v2/my/agent").build();
-        ResponseEntity<Map<String, Object>> response = jsonRestTemplate.exchange(request, Constants.MAP_TYPE_REFERENCE);
-        return response;
+        Map<String, Object> data = agentService.getAgentData();
+        return ResponseEntity.of(Optional.ofNullable(data));
+    }
+
+    @GetMapping("/factions")
+    public ResponseEntity<Map<String, Object>> getFactions() {
+        Map<String, Object> data = factionsService.getListOfFactions();
+        return ResponseEntity.of(Optional.ofNullable(data));
     }
 }
