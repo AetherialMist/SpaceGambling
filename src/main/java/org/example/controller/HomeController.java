@@ -10,7 +10,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/")
 	public String index() {
-        log.info("hit index");;
+        log.info("hit index");
 		return "index";
 	}
 
