@@ -1,26 +1,20 @@
 package org.example.config;
 
-import java.io.IOException;
+import io.github.cdimascio.dotenv.Dotenv;
+import lombok.extern.slf4j.Slf4j;
+import org.example.rest.MapRestTemplate;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.example.rest.MapRestTemplate;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.MediaType;
-import org.springframework.http.client.ClientHttpRequestExecution;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.web.client.RestTemplate;
-
-import lombok.extern.slf4j.Slf4j;
-
 @Slf4j
 @Configuration
-@EnableConfigurationProperties(SpaceProperties.class)
 public class SpaceConfig {
 
     public static final String JSON_REST_TEMPLATE_BEAN = "jsonRestTemplate";
@@ -30,10 +24,12 @@ public class SpaceConfig {
     }
 
     @Bean(JSON_REST_TEMPLATE_BEAN)
-    public RestTemplate jsonRestTemplate(SpaceProperties props) {
+    public RestTemplate jsonRestTemplate() {
         RestTemplate template = new RestTemplate();
+        Dotenv dotenv = Dotenv.load();
+
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
-        interceptors.add(createAuthInterceptor(props));
+        interceptors.add(createAuthInterceptor(dotenv.get("TOKEN")));
         template.setInterceptors(interceptors);
         return template;
     }
@@ -43,9 +39,9 @@ public class SpaceConfig {
         return new MapRestTemplate(template);
     }
 
-    private ClientHttpRequestInterceptor createAuthInterceptor(SpaceProperties props) {
+    private ClientHttpRequestInterceptor createAuthInterceptor(String token) {
         return (request, body, execution) -> {
-            request.getHeaders().set("Authorization", "Bearer " + props.getToken());
+            request.getHeaders().set("Authorization", "Bearer " + token);
             request.getHeaders().set("Accept", MediaType.APPLICATION_JSON_VALUE);
             return execution.execute(request, body);
         };
