@@ -12,4 +12,8 @@ public final class Constants {
 
     private Constants() {}
 
+    public static String prefixUri(String uri) {
+        return SPACE_TRADERS_API_V2 + uri;
+    }
+
 }

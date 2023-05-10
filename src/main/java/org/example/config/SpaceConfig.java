@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.example.rest.MapRestTemplate;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,6 +36,11 @@ public class SpaceConfig {
         interceptors.add(createAuthInterceptor(props));
         template.setInterceptors(interceptors);
         return template;
+    }
+
+    @Bean
+    public MapRestTemplate mapRestTemplate(@Qualifier(JSON_REST_TEMPLATE_BEAN) RestTemplate template) {
+        return new MapRestTemplate(template);
     }
 
     private ClientHttpRequestInterceptor createAuthInterceptor(SpaceProperties props) {

@@ -36,7 +36,7 @@ public class StartingController {
 
     @GetMapping("/factions")
     public ResponseEntity<Map<String, Object>> getFactions() {
-        Map<String, Object> data = factionsService.getListOfFactions();
+        Map<String, Object> data = factionsService.listFactions();
         return ResponseEntity.of(Optional.ofNullable(data));
     }
 }
