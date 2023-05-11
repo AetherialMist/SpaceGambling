@@ -1,7 +1,8 @@
 package org.example.service;
 
-import org.example.config.Constants;
-import org.example.rest.MapRestTemplate;
+import org.example.exception.SpaceTradersApiException;
+import org.example.rest.SpaceTradersRestTemplate;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -9,14 +10,14 @@ import java.util.Map;
 @Service
 public class FactionsService {
 
-    private final MapRestTemplate mapRestTemplate;
+    private final SpaceTradersRestTemplate spaceTradersRestTemplate;
 
-    public FactionsService(MapRestTemplate mapRestTemplate) {
-        this.mapRestTemplate = mapRestTemplate;
+    public FactionsService(SpaceTradersRestTemplate spaceTradersRestTemplate) {
+        this.spaceTradersRestTemplate = spaceTradersRestTemplate;
     }
 
-    public Map<String, Object> listFactions() {
-        return mapRestTemplate.get(Constants.prefixUri("/factions"));
+    public Map<String, Object> listFactions() throws SpaceTradersApiException {
+        return spaceTradersRestTemplate.invoke(HttpMethod.GET, "/factions");
     }
 
 }

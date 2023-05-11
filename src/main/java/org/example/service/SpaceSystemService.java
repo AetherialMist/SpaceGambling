@@ -1,8 +1,9 @@
 package org.example.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.config.Constants;
-import org.example.rest.MapRestTemplate;
+import org.example.exception.SpaceTradersApiException;
+import org.example.rest.SpaceTradersRestTemplate;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -11,11 +12,11 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SpaceSystemService {
 
-    private final MapRestTemplate mapRestTemplate;
+    private final SpaceTradersRestTemplate spaceTradersRestTemplate;
 
-    public Map<String, Object> getSystemInformation(String system, String waypoint) {
+    public Map<String, Object> getSystemInformation(String system, String waypoint) throws SpaceTradersApiException {
         String path = String.format("/systems/%s/waypoints/%s", system, waypoint);
-        return mapRestTemplate.get(Constants.prefixUri(path));
+        return spaceTradersRestTemplate.invoke(HttpMethod.GET, path);
     }
 
 }

@@ -2,6 +2,7 @@ package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.exception.SpaceTradersApiException;
 import org.example.service.AgentService;
 import org.example.service.FactionsService;
 import org.springframework.http.ResponseEntity;
@@ -19,24 +20,27 @@ public class StartingController {
     private final AgentService agentService;
     private final FactionsService factionsService;
 
-    @PostMapping("/start")
-    public ResponseEntity<String> postNewAgent(@RequestBody Map<String, Object> input) {
-        ResponseEntity<String> response = null;
-
-        log.info("{}", input);
-
-        return response;
-    }
-
     @GetMapping("/agent")
     public ResponseEntity<Map<String, Object>> getAgentDetails() {
-        Map<String, Object> data = agentService.getAgentData();
-        return ResponseEntity.of(Optional.ofNullable(data));
+        return invoke(agentService::getAgentData);
     }
 
     @GetMapping("/factions")
     public ResponseEntity<Map<String, Object>> getFactions() {
-        Map<String, Object> data = factionsService.listFactions();
+        return invoke(factionsService::listFactions);
+    }
+
+    private ResponseEntity<Map<String, Object>> invoke(ApiCall method) {
+        Map<String, Object> data = null;
+        try {
+            data = method.invoke();
+        } catch (SpaceTradersApiException e) {
+            log.error("API failure.", e);
+        }
         return ResponseEntity.of(Optional.ofNullable(data));
+    }
+
+    private interface ApiCall {
+        Map<String, Object> invoke() throws SpaceTradersApiException;
     }
 }

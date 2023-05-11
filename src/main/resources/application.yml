@@ -2,3 +2,15 @@ spring:
   data:
     rest:
       base-path: /api
+
+space-traders:
+  host: https://api.spacetraders.io
+  version: v2
+
+logging:
+  level:
+    root: info
+    org:
+      example:
+        service:
+          TokenService: debug
