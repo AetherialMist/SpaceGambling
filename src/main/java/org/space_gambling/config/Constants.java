@@ -1,4 +1,4 @@
-package org.example.config;
+package org.space_gambling.config;
 
 import org.springframework.core.ParameterizedTypeReference;
 

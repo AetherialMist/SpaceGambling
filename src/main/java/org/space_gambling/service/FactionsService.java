@@ -1,7 +1,7 @@
-package org.example.service;
+package org.space_gambling.service;
 
-import org.example.exception.SpaceTradersApiException;
-import org.example.rest.SpaceTradersRestTemplate;
+import org.space_gambling.exception.SpaceTradersApiException;
+import org.space_gambling.rest.SpaceTradersRestTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
