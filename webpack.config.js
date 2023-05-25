@@ -4,6 +4,7 @@ module.exports = {
     entry: path.resolve(__dirname, './src/main/js/app.tsx'),
     mode: 'development',
     devtool: 'cheap-source-map',
+    darkMode: 'class',
     output: {
         path: __dirname,
         filename: './src/main/resources/static/built/bundle.js'
@@ -22,6 +23,25 @@ module.exports = {
                         presets: ["@babel/preset-env", "@babel/preset-typescript", "@babel/preset-react"]
                     }
                 }]
+            },
+            {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        "postcss-preset-env"
+                                    ]
+                                ]
+                            }
+                        }
+                    }
+                ],
             }
         ]
     }
