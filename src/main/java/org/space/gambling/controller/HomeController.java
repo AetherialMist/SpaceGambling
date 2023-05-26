@@ -1,4 +1,4 @@
-package org.space_gambling.controller;
+package org.space.gambling.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

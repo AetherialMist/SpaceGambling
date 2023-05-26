@@ -2,7 +2,7 @@
 module.exports = {
   content: ['./src/main/js/**/*.{html,jsx,tsx}'],
   presets: [],
-  darkMode: 'media', // or 'class'
+  darkMode: 'class', // 'media' or 'class'
   theme: {
     accentColor: ({ theme }) => ({
       ...theme('colors'),

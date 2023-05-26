@@ -1,8 +1,8 @@
-package org.space_gambling.service;
+package org.space.gambling.service;
 
 import lombok.RequiredArgsConstructor;
-import org.space_gambling.exception.SpaceTradersApiException;
-import org.space_gambling.rest.SpaceTradersRestTemplate;
+import org.space.gambling.exception.SpaceTradersApiException;
+import org.space.gambling.rest.SpaceTradersRestTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package org.space_gambling.service;
+package org.space.gambling.service;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import lombok.extern.slf4j.Slf4j;

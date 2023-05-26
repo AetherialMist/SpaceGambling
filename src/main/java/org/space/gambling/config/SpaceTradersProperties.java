@@ -1,4 +1,4 @@
-package org.space_gambling.config;
+package org.space.gambling.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

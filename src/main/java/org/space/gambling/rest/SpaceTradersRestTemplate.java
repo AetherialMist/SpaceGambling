@@ -1,9 +1,9 @@
-package org.space_gambling.rest;
+package org.space.gambling.rest;
 
 import lombok.extern.slf4j.Slf4j;
-import org.space_gambling.config.Constants;
-import org.space_gambling.config.SpaceTradersProperties;
-import org.space_gambling.exception.SpaceTradersApiException;
+import org.space.gambling.config.Constants;
+import org.space.gambling.config.SpaceTradersProperties;
+import org.space.gambling.exception.SpaceTradersApiException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.RequestEntity;
@@ -15,7 +15,7 @@ import java.net.URI;
 import java.util.Map;
 import java.util.Objects;
 
-import static org.space_gambling.config.SpaceTradersConfig.JSON_WITH_AUTH_REST_TEMPLATE_BEAN;
+import static org.space.gambling.config.SpaceTradersConfig.JSON_WITH_AUTH_REST_TEMPLATE_BEAN;
 
 @Slf4j
 @Service

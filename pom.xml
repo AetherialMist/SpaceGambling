@@ -11,8 +11,8 @@
         <relativePath />
     </parent>
 
-    <groupId>org.space_gambling</groupId>
-    <artifactId>space_gambling</artifactId>
+    <groupId>org.space.gambling</groupId>
+    <artifactId>space-gambling</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -63,7 +63,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.space_gambling.Runner</mainClass>
+                    <mainClass>org.space.gambling.Runner</mainClass>
                 </configuration>                   
             </plugin>
         </plugins>

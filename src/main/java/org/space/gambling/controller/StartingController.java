@@ -1,10 +1,10 @@
-package org.space_gambling.controller;
+package org.space.gambling.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.space_gambling.exception.SpaceTradersApiException;
-import org.space_gambling.service.AgentService;
-import org.space_gambling.service.FactionsService;
+import org.space.gambling.exception.SpaceTradersApiException;
+import org.space.gambling.service.AgentService;
+import org.space.gambling.service.FactionsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

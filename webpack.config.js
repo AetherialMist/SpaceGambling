@@ -4,7 +4,6 @@ module.exports = {
     entry: path.resolve(__dirname, './src/main/js/app.tsx'),
     mode: 'development',
     devtool: 'cheap-source-map',
-    darkMode: 'class',
     output: {
         path: __dirname,
         filename: './src/main/resources/static/built/bundle.js'
