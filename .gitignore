@@ -5,3 +5,4 @@ target
 node_modules
 .env
 src/main/resources/static/built/bundle.js.map
+src/main/resources/static/built/bundle.js
