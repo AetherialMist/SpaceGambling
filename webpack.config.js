@@ -22,6 +22,25 @@ module.exports = {
                         presets: ["@babel/preset-env", "@babel/preset-typescript", "@babel/preset-react"]
                     }
                 }]
+            },
+            {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        "postcss-preset-env"
+                                    ]
+                                ]
+                            }
+                        }
+                    }
+                ],
             }
         ]
     }

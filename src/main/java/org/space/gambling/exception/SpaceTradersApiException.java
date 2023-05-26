@@ -1,4 +1,4 @@
-package org.example.exception;
+package org.space.gambling.exception;
 
 public class SpaceTradersApiException extends Exception {
 

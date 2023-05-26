@@ -1,7 +1,7 @@
-package org.example.config;
+package org.space.gambling.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.service.TokenService;
+import org.space.gambling.service.TokenService;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
